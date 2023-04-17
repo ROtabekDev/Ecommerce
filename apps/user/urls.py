@@ -1,5 +1,8 @@
-from typing import List, Union
+from django.urls import path  # noqa: F401
 
-from django.urls import URLPattern, URLResolver, path  # noqa: F401
+from apps.user.api_endpoints.user import UserRegisterAPIView, UserLoginAPIView
 
-urlpatterns: List[Union[URLPattern, URLResolver]] = []
+urlpatterns = [
+    path('register/', UserRegisterAPIView.as_view(), name='user-register'),
+    path('login/', UserLoginAPIView.as_view(), name='user-login'),
+]
