@@ -80,3 +80,16 @@ class Wishlist(BaseModel):
     class Meta:
         verbose_name = "Wishlist"
         verbose_name_plural = "Wishlists"
+
+
+class PurchasedProduct(BaseModel):
+    user = models.ForeignKey("user.User", on_delete=models.CASCADE, verbose_name="User")
+    product = models.ForeignKey("product.Product", on_delete=models.CASCADE, verbose_name="Product")
+    qty = models.PositiveIntegerField('Quantity')
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = "Purchased product"
+        verbose_name_plural = "Purchased products"

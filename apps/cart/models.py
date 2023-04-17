@@ -8,7 +8,6 @@ from .choices import BuyigType, OrderStatus
 
 
 class CartItem(BaseModel):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User")
     cart = models.ForeignKey("cart.Cart", verbose_name="Cart", on_delete=models.CASCADE)
     product = models.ForeignKey("product.Product", on_delete=models.CASCADE, verbose_name="Product")
     qty = models.PositiveIntegerField("Quantity", default=1)
