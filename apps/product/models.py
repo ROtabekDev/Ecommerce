@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models  # noqa: F401
-from django.conf import settings
+
 from apps.common.models import BaseModel
 
 from .choices import CurrencyType
