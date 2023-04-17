@@ -43,17 +43,29 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-CUSTOM_APPS: List[str] = []
+CUSTOM_APPS: List[str] = [
+    'apps.cart.apps.CartConfig',
+    'apps.common.apps.CommonConfig',
+    'apps.product.apps.ProductConfig',
+    'apps.user.apps.UserConfig',
+]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
     "drf_yasg",
     "phonenumber_field",
+    'rest_framework_simplejwt',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": {"api_key": {"type": "apiKey", "in": "header", "name": "Authorization"}}}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -66,6 +78,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+
+AUTH_USER_MODEL = "user.User"
 
 TEMPLATES = [
     {
