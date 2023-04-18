@@ -1,16 +1,32 @@
+from captcha import fields
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import Group
 from django.urls import include, path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+
+
+class LoginForm(AuthenticationForm):
+    captcha = fields.ReCaptchaField()
+
+    def clean(self):
+        captcha = self.cleaned_data.get("captcha")
+        if not captcha:
+            return
+        return super().clean()
+
+
+admin.site.login_form = LoginForm
+admin.site.login_template = "login.html"
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -45,3 +61,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+admin.site.unregister(Group)

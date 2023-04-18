@@ -8,4 +8,6 @@ psycopg2-binary==2.9.6
 phonenumbers==8.13.9
 django-phonenumber-field==7.0.2
 rest-framework-simplejwt==0.0.2
+django-recaptcha==3.0.0
+environs[django]==9.5.0
 

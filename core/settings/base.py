@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from os import getenv
 from pathlib import Path
 from typing import List
-from datetime import timedelta
 
 from dotenv import load_dotenv
 
@@ -57,6 +57,7 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "phonenumber_field",
     'rest_framework_simplejwt',
+    'captcha',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
@@ -164,7 +165,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 PHONENUMBER_DEFAULT_REGION = "UZ"
 
-
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=3),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
@@ -204,3 +204,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+RECAPTCHA_PUBLIC_KEY = '6Lcp3polAAAAAM8bkyhFL-3ekAunpk81WSNtWN24'
+RECAPTCHA_PRIVATE_KEY = '6Lcp3polAAAAAIQPhVjyzFMmPFekoxYgPn3UegpN'
+
+
