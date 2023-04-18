@@ -32,7 +32,7 @@ class Cart(BaseModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="User")
     total_products = models.IntegerField("Total products", default=0)
     final_price = models.DecimalField("Final price", max_digits=12, decimal_places=2, default=0)
-    discout_price = models.DecimalField("Discount price", max_digits=12, decimal_places=2, default=0)
+    discount_price = models.DecimalField("Discount price", max_digits=12, decimal_places=2, default=0)
     discount_percentage = models.PositiveIntegerField("Discount percentage", default=0)
     shipping_cost = models.DecimalField(
         max_digits=12, decimal_places=2, verbose_name="Shipping cost", default=0
