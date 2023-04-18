@@ -1,6 +1,9 @@
+from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from apps.cart.models import Order, Cart
+from apps.cart.models import Order, Cart, CartItem
+from apps.user.models import PurchasedProduct
+from apps.product.models import Product
 
 
 class OrderCreateSerializer(ModelSerializer):
@@ -32,6 +35,16 @@ class OrderCreateSerializer(ModelSerializer):
 
         if cart.in_order != False:
             raise serializers.ValidationError({"message": "This cart has been ordered."})
+
+        cart_items = CartItem.objects.filter(cart=cart).values('product', 'qty')
+
+        for cart_item in cart_items:
+            product_id = cart_item.get('product')
+            qty = cart_item.get('qty')
+            product = Product.objects.get(id=product_id)
+            purchased_product = PurchasedProduct.objects.get_or_create(user=user, product=product)
+            purchased_product[0].qty += qty
+            purchased_product[0].save()
 
         cart.in_order = True
         cart.save()

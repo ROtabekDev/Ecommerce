@@ -85,10 +85,10 @@ class Wishlist(BaseModel):
 class PurchasedProduct(BaseModel):
     user = models.ForeignKey("user.User", on_delete=models.CASCADE, verbose_name="User")
     product = models.ForeignKey("product.Product", on_delete=models.CASCADE, verbose_name="Product")
-    qty = models.PositiveIntegerField('Quantity')
+    qty = models.PositiveIntegerField('Quantity', default=0)
 
     def __str__(self):
-        return self.text
+        return str(self.id)
 
     class Meta:
         verbose_name = "Purchased product"
