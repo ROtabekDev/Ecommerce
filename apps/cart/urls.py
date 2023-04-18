@@ -2,7 +2,7 @@ from django.urls import path  # noqa: F401
 
 from apps.cart.api_endpoints.cart import CartDetailAPIView, CartItemListAPIView, CartItemCreateAPIView, \
     CartItemDeleteFromCartAPIView, ChangeCartItemQTYAPIView
-
+from apps.cart.api_endpoints.order import OrderCreateAPIView
 from apps.cart.api_endpoints.other import PaymentTypeListAPIView, RegionListAPIView, DistrictListAPIView
 
 urlpatterns = [
@@ -14,12 +14,11 @@ urlpatterns = [
          name='cart-item-delete-from-cart'),
     path("cart-item/change-qty/", ChangeCartItemQTYAPIView.as_view(), name='cart-item-change-qty'),
 
-    # region
+    # order
+    path("order/create/", OrderCreateAPIView.as_view(), name='order-create'),
+
+    # other
     path("region/list/", RegionListAPIView.as_view(), name='region-list'),
-
-    # district
     path("district/list/", DistrictListAPIView.as_view(), name='district-list'),
-
-    # payment_type
     path("payment-type/list/", PaymentTypeListAPIView.as_view(), name='payment-type-list'),
 ]
