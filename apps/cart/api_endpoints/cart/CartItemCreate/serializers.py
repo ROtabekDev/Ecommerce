@@ -30,9 +30,6 @@ class CartItemCreateSerializer(ModelSerializer):
             cart=cart, product=product
         )
 
-        if created:
-            CartProduct.objects.create(cart=cart, product=cart_item)
-
         update_cart(cart=cart)
 
         return cart_item
