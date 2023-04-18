@@ -20,17 +20,6 @@ class ProductMiniSerializer(ModelSerializer):
             return ""
         return f"{settings.HOST_URL}{image.image.url}"
 
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #
-    #     image = ProductImages.objects.filter(product=instance, use_for_slider=True)
-    #
-    #     if image.exists():
-    #         serializer = ProductImagesSerializer(image, context={"request": self.context["request"]})
-    #         representation["image"] = serializer.data
-    #
-    #     return representation
-
 
 class CartItemListSerializer(ModelSerializer):
     product = ProductMiniSerializer()
@@ -38,4 +27,3 @@ class CartItemListSerializer(ModelSerializer):
     class Meta:
         model = CartItem
         fields = ('product', 'qty', 'final_price')
-
