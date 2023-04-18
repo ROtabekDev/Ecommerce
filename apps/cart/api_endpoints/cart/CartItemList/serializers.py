@@ -11,7 +11,7 @@ class ProductMiniSerializer(ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('title', 'image')
+        fields = ('id','title', 'image')
 
     def get_image(self, obj):
         image = ProductImages.objects.filter(product=obj, use_for_slider=True).first()
