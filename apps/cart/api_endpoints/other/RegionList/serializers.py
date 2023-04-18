@@ -1,0 +1,9 @@
+from rest_framework.serializers import ModelSerializer
+
+from apps.cart.models import Region
+
+
+class RegionListSerializer(ModelSerializer):
+    class Meta:
+        model = Region
+        fields = ("id", "title")

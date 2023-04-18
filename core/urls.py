@@ -28,10 +28,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     # custom apps
-    path("api/v1/common/", include("apps.common.urls")),
-    path("api/v1/user/", include("apps.user.urls")),
-    path("api/v1/product/", include("apps.product.urls")),
-    path("api/v1/cart/", include("apps.cart.urls")),
+    path("api/common/", include("apps.common.urls")),
+    path("api/user/", include("apps.user.urls")),
+    path("api/product/", include("apps.product.urls")),
+    path("api/cart/", include("apps.cart.urls")),
 
     # jwt token
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
