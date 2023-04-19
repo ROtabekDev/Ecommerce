@@ -37,6 +37,8 @@ HOST_URL = getenv("HOST_URL")
 # Application definition
 DJANGO_APPS = [
     "jazzmin",
+    "modeltranslation",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -58,6 +60,7 @@ THIRD_PARTY_APPS = [
     "phonenumber_field",
     'rest_framework_simplejwt',
     'captcha',
+    "rosetta",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
@@ -76,6 +79,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -148,6 +152,26 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Model Translation
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('uz', 'en', 'ru')
+
+
+def gettext(s):
+    return s
+
+
+LANGUAGES = (
+    ("en", gettext("English")),
+    ("ru", gettext("Русский")),
+    ("uz", gettext("O'zbekcha")),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -207,5 +231,3 @@ SIMPLE_JWT = {
 
 RECAPTCHA_PUBLIC_KEY = '6Lcp3polAAAAAM8bkyhFL-3ekAunpk81WSNtWN24'
 RECAPTCHA_PRIVATE_KEY = '6Lcp3polAAAAAIQPhVjyzFMmPFekoxYgPn3UegpN'
-
-
