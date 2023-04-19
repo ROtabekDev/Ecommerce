@@ -6,7 +6,8 @@ from apps.product.api_endpoints.product import ProductDetailAPIView, GetProductF
 urlpatterns = [
     # product
     path('detail/<int:pk>/', ProductDetailAPIView.as_view(), name='product-detail'),
-    path('get-product-features/<int:product_id>/', GetProductFeaturesListAPIView.as_view(), name='get-product-features'),
+    path('get-product-features/<int:product_id>/', GetProductFeaturesListAPIView.as_view(),
+         name='get-product-features'),
 
     # review
     path('review/list/', ReviewListAPIView.as_view(), name='review-list'),
