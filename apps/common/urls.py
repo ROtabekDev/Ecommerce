@@ -1,5 +1,7 @@
-from typing import List, Union
+from django.urls import path  # noqa: F401
 
-from django.urls import URLPattern, URLResolver, path  # noqa: F401
+from apps.common.api_endpoints.contact import ContanctCreateAPIView
 
-urlpatterns: List[Union[URLPattern, URLResolver]] = []
+urlpatterns = [
+    path('contact/create/', ContanctCreateAPIView.as_view(), name='contact-create')
+]

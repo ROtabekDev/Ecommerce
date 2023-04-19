@@ -108,3 +108,4 @@ class Review(BaseModel):
     class Meta:
         verbose_name = "Review"
         verbose_name_plural = "Reviews"
+        unique_together = ('user', 'product')
