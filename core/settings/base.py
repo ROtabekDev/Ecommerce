@@ -55,6 +55,7 @@ CUSTOM_APPS: List[str] = [
 ]
 
 THIRD_PARTY_APPS = [
+    'django_filters',
     "rest_framework",
     "drf_yasg",
     "phonenumber_field",
@@ -73,7 +74,10 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 MIDDLEWARE = [
