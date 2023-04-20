@@ -1,1 +1,2 @@
-from .BrandList import *
+from .BrandList import * # noqa
+from .BrandListByCategory import * # noqa
