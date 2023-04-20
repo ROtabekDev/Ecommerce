@@ -12,6 +12,7 @@ django-recaptcha==3.0.0
 environs[django]==9.5.0
 django-modeltranslation==0.18.9
 django-rosetta==0.9.9
+django-filter==23.1
 
 
 
