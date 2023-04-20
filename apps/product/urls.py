@@ -1,6 +1,6 @@
 from django.urls import path  # noqa: F401
 
-from apps.product.api_endpoints.Brand import BrandListAPIView
+from apps.product.api_endpoints.Brand import BrandListAPIView, BrandListByCategoryListAPIView
 from apps.product.api_endpoints.Category import CategoryListAPIView
 
 from apps.product.api_endpoints.review import ReviewCreateAPIView, ReviewDeleteAPIView, ReviewListAPIView
@@ -29,6 +29,8 @@ urlpatterns = [
 
     # Brand
     path("brand-list/", BrandListAPIView.as_view(), name="brand-list"),
+    path("brands-by-category/list/<int:category_id>/", BrandListByCategoryListAPIView.as_view(),
+         name="brands-by-category-list"),
 
     # review
     path('review/list/', ReviewListAPIView.as_view(), name='review-list'),
