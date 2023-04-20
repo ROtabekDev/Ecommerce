@@ -10,6 +10,7 @@ from .choices import CurrencyType
 class Product(BaseModel):
     title = models.CharField("Title", max_length=150)
     slug = models.CharField("Slug", max_length=150)
+    description = models.TextField("Description", null=True, blank=True)
     category = models.ForeignKey("product.Category", on_delete=models.CASCADE, verbose_name="Category")
     brand = models.ForeignKey("product.Brand", on_delete=models.CASCADE, verbose_name="Brand")
     price = models.DecimalField("Price", max_digits=10, decimal_places=2)
