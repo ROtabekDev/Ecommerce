@@ -8,6 +8,7 @@ from apps.product.api_endpoints.product import (
     ProductDetailAPIView, ProductListAPIView, GetProductFeaturesListAPIView,
     RelatedProductListAPIView
 )
+from apps.product.api_endpoints.feature import FeatureListByCategoryListAPIView
 
 urlpatterns = [
 
@@ -18,6 +19,10 @@ urlpatterns = [
          name='get-product-features'),
 
     path('related-product/list/<int:product_id>/', RelatedProductListAPIView.as_view(), name='related-product-list'),
+
+    # feature
+    path('features-by-category/list/<int:category_id>/', FeatureListByCategoryListAPIView.as_view(),
+         name='features-by-category-list'),
 
     # Category
     path("category-list/", CategoryListAPIView.as_view(), name="category-list"),
