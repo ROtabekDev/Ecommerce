@@ -5,7 +5,7 @@ from apps.product.models import Product, Category, Feature, FeatureName, Review
 
 @register(Product)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('title', 'category')
+    fields = ('title',)
 
 
 @register(Category)

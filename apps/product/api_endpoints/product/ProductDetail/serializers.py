@@ -23,7 +23,7 @@ class ProductDetailSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'title', 'brand', 'price', 'is_discount', 'discount_price', 'currency_type', 'available', 'reviews_count',
+            'title', 'brand', 'description', 'price', 'is_discount', 'discount_price', 'currency_type', 'available', 'reviews_count',
             'count_products_sold', 'product_rating_number', 'images'
         )
 
