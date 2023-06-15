@@ -31,7 +31,7 @@ from rest_framework_simplejwt.views import (
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="TojirShop",
+        title="Ecommerce",
         default_version="v1",
         description="Test description",
         terms_of_service="https://www.google.com/policies/terms/",
@@ -73,4 +73,3 @@ if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.unregister(Group)
-
