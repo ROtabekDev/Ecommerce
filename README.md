@@ -15,4 +15,14 @@
 
 
 ### Database schema
-<img src="Ecommerce DB.jpg">
+<img src="images/Ecommerce DB.jpg">
+
+### API images
+#### User app
+<img src="images/api_user_app.png">
+
+#### Product app
+<img src="images/api_product_app.png">
+
+#### Cart app
+<img src="images/api_cart_app.png">
